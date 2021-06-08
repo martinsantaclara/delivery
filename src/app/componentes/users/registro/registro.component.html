@@ -1,0 +1,100 @@
+<div class="form-container mb-5 mt-1">
+  <h1 class="h3 mb-2 font-weight-normal">Bienvenido a <span style="font-family: 'Lobster', cursive">El Buen Gusto</span></h1>
+  <h4 style=" font-size: medium;">Credenciales de acceso</h4>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+    <div class="alert alert-danger" role="alert" *ngIf="isError">
+      <p>Los datos que ha ingresado no son válidos</p>
+      <p>Intente nuevamente!</p>
+    </div>
+
+    <input type="text" name="email" class="form-control is-valid" id="validationServer01" formControlName="email" placeholder="email" (focus)="onFocus()">
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div class="container-error-message" *ngIf="email.hasError('required')">
+        <p>El email es requerido como credencial del usuario. y viva peron peron peron</p>
+      </div>
+      <div class="container-error-message" *ngIf="email.hasError('pattern')">
+        <p>Debe ser una dirección de email válida.</p>
+      </div>
+      <div class="container-error-message" *ngIf="email.hasError('existe')">
+        <p>Ya existe un usuario registrado con ese email.</p>
+      </div>
+    </div>
+
+    <div class="alert-info" *ngIf="email.pending">
+      <p>Chequeando si el email ya se encuentra registrado ...</p>
+    </div>
+      <!-- <div class="alert-success" *ngIf="email.valid">
+        <p>El email está disponible para utilizarlo como su credencial.</p>
+      </div> -->
+
+    <input type="password" class="form-control" formControlName="password" placeholder="contraseña" (focus)="onFocus()">
+    <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div class="container-error-message" *ngIf="password.hasError('required')">
+       <p> La contraseña es requerida.</p>
+      </div>
+      <div class="container-error-message" *ngIf="password.hasError('minlength')">
+        <p>La contraseña debe contener 6 caracteres como mínimo.</p>
+      </div>
+      <div class="container-error-message" *ngIf="password.hasError('passwordValidation')">
+        <p>{{password.errors.passwordValidation.message}}</p>
+      </div>
+    </div>
+
+    <input type="password" class="form-control" formControlName="confirmPassword" placeholder="repite contraseña" (focus)="onFocus()">
+    <div class="alert-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+      <div class="container-error-message" *ngIf="confirmPassword.hasError('required')">
+        <p>La confirmación de la contraseña es requerida.</p>
+      </div>
+      <div class="container-error-message" *ngIf="confirmPassword.hasError('compare')">
+        <p>La confirmación y la contraseña no son coincidentes.</p>
+      </div>
+    </div>
+
+    <h4 style=" font-size: medium;">Completa tus datos</h4>
+
+    <input type="text" name="name" class="form-control" formControlName="nombre" placeholder="nombre" (focus)="onFocus()">
+    <div class="alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+      <div class="container-error-message" *ngIf="nombre.hasError('required')">
+        <p>El nombre es requerido.</p>
+      </div>
+      <div class="container-error-message" *ngIf="nombre.hasError('minlength')">
+        <p>El nombre debe contener 4 caracteres como mínimo.</p>
+      </div>
+    </div>
+
+    <input type="text" name="direccion" class="form-control" formControlName="direccion" placeholder="direccion" (focus)="onFocus()">
+    <div class="alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+      <div class="container-error-message" *ngIf="direccion.hasError('required')">
+        <p>El dato de la dirección es requerido.</p>
+      </div>
+    </div>
+
+    <input type="text" name="telefono" class="form-control" formControlName="telefono" placeholder="telefono" (focus)="onFocus()">
+    <div class="alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+      <div class="container-error-message" *ngIf="telefono.hasError('required')">
+        <p>El teléfono es un dato requerido.</p>
+      </div>
+    </div>
+
+
+
+    <div class="form-group"></div>
+    <button type="submit" class="btn btn-info btn-send" [disabled]="registerForm.invalid">Registrarte</button>
+    <div class="form-group"></div>
+
+    <!-- <div class="form-group">
+      <button class="btn btn-block btn-social btn-facebook" (click)="onRegisterFacebook()">
+        <span class="fab fa-facebook-f"></span>
+        FACEBOOK
+      </button>
+      <button class="btn btn-block btn-social btn-google" (click)="onRegisterGoogle()">
+        <span class="fab fa-google"></span>
+        GOOGLE
+      </button>
+    </div> -->
+  </form>
+</div>

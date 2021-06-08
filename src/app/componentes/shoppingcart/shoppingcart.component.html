@@ -1,0 +1,33 @@
+<div class="contenedor-cart" style="position: absolute; left: 66%; width: 33%; top:13.3rem; height: 70vh; background: #f8f9fa;">
+  <h2 style="text-align: center; padding-left: 12rem; width:100%; font-weight: bolder; font-size: xx-large; border-bottom: 5px solid #3f51b5;">Mi Pedido
+    <span><button class="btn" style="padding-left: 7rem;" (click)="borraPedidoActual()"><i class="fas fa-trash-alt fa-2x"></i></button></span>
+  </h2>
+  <div *ngIf="pedidoActual===undefined else tienePedido">
+    <img src="../assets/ups.jpg" style="display:block; margin:auto; margin-top: 7rem; width: 12rem; height:12rem; border-radius: 50%;">
+    <p style="text-align: center; margin-top: 4rem; font-family: Gabriola; font-size: x-large; font-weight:bolder; color: silver">
+       todavía no tienes pedido!!!</p>
+  </div>
+  <ng-template #tienePedido>
+  <div class="carrito" *ngFor="let item of items">
+      <div class="cantidad">{{item.cantidad}}</div>
+      <div class="descripcion">{{item.nombreProducto}}</div>
+      <div class="precio">{{item.precio | currency}}</div>
+      <div class="subtotal">{{item.subtotal | currency}} </div>
+      <div class="masuno">
+        <button class="btn" style="padding-left: 0px; ; padding-top: 8px;" (click)="modificaItem(item,true)"><i class="fas fa-plus-circle"></i></button>
+      </div>
+      <div class="menosuno">
+        <button class="btn" style="padding-left: 0px; ; padding-top: 8px;" (click)="modificaItem(item,false)"><i class="fas fa-minus-circle"></i></button>
+      </div>
+  </div>
+  <br>
+  <div style="position: relative; font-weight: bold; margin-left: 5rem; border-bottom: 5px solid #3f51b5; margin-right: 3rem;">TOTAL
+    <span id="total" style="font-size:large;" [style.padding-left.rem]="paddingLeftTotal">{{pedidoActual?.total | currency}}</span>
+  </div>
+</ng-template>
+</div>
+
+<div class="contenedor-cart" *ngIf="pedidoActual!==undefined" style="position: absolute; left: 66%; width: 33%; top:94vh; height: 5vh; background: #f8f9fa;">
+  <button class="btn btn-primary btn-block" (click)="confirmaPedido()">Confirma pedido</button>
+</div>
+

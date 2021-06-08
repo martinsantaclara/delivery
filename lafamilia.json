@@ -1,0 +1,24 @@
+{
+  "carrito": [
+    {
+      "idUsuario": 1,
+      "items": [
+        {
+          "cantidad": 2,
+          "idProducto": 1,
+          "nombreProducto": "Hamb. Vegetal",
+          "precio": 180,
+          "subtotal": 360
+        },
+        {
+          "cantidad": 6,
+          "idProducto": 13,
+          "nombreProducto": "Empanadas Carne Dulce",
+          "precio": 40,
+          "subtotal": 240
+        }
+      ],
+      "total": 600
+    }
+  ]
+}

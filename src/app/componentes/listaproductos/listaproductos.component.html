@@ -1,0 +1,12 @@
+<div style="margin-left: 2%; display: flex; justify-content: start; flex-wrap: wrap;">
+  <div *ngFor="let producto of prodsPorCategoria" >
+    <!-- <app-product [producto]="producto" [categoria]="categoria" [favoritos]="favoritos" (favoritoActualizado)="actualizaFavorito($event)">
+    </app-product> -->
+    <app-product [producto]="producto" [favoritos]="favoritos" (favoritoActualizado)="actualizaFavorito($event)">
+    </app-product>
+  </div>
+</div>
+<!-- <div class="card" style="width:300px; height: 8rem;" *ngIf="producto.categoria ===categoria">
+      <div class="card-title">{{producto.text}}</div>
+      <div class="card-footer">$ 120.00</div>
+      </div> -->

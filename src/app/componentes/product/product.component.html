@@ -1,0 +1,31 @@
+<!-- <div class="card border-success mb-3" style="width: 18.7rem; margin-left: 1rem;" *ngIf="producto.categoria === categoria"> -->
+<div class="card border-success mb-3" style="width: 18.7rem; margin-left: 1rem;">
+  <div class="card-header" style="position:relative; padding-left: 0.5rem; padding-bottom: 0.5rem;">
+    <img [src]="producto.image"  routerLink="/producto/{{producto.id}}" style="height:150px; width: 15.5rem; cursor: pointer;"/>
+    <!-- <button class="btn" id="favorito" style="position: absolute; top:0.5rem; left:15.5rem;"><i class="fa fa-heart fa-lg fa-2x"></i></button> -->
+    <button *ngIf="!producto.favorito" class="btn" id="favorito" style="position: absolute; top:0.5rem; left:15.5rem;" (click)="agregaFavorito(producto)">
+      <i class="far fa-heart fa-lg fa-2x"></i>
+    </button>
+    <button *ngIf="producto.favorito" class="btn" id="favorito" style="position: absolute; top:0.5rem; left:15.5rem;">
+      <i class="fas fa-heart fa-lg fa-2x"></i>
+    </button>
+  </div>
+  <div class="card-body" style="position:relative; padding: 5px 10px 20px 10px;">
+    <h5 style="margin: 0px; font-weight: bold;">{{producto.text}}</h5>
+    <!-- <p class="card-text" style="padding-top:1rem;">Some quick example text ...</p> -->
+    <p style="padding-top: 5px; padding-bottom: 5px; line-height: 1rem; margin: 0px; font-size: small;" *ngIf="producto.truncate else notruncate" (click)="changeTruncate()">
+        {{producto.descripcion | truncate:[43,' ...']}}
+    </p>
+    <ng-template #notruncate>
+      <p style="padding-top: 5px; padding-bottom: 5px; line-height: 1rem; margin: 0px; font-size: small;" (click)="changeTruncate()">{{producto.descripcion}}</p>
+    </ng-template>
+    <div style="position:relative; margin-top:10px; margin-bottom: -30px;">
+      <p style="padding-left: 2rem;">{{producto.precio | currency }}</p>
+      <button class="btn" style="position:absolute; top:-0.8rem; left: 12rem;" (click)="addToCart(producto)"><i class="fas fa-plus-circle fa-2x"></i></button>
+    </div>
+  </div>
+</div>
+<div *ngIf="totalProductos">
+  <br><br><br>
+  <br><br><br><br>
+</div>

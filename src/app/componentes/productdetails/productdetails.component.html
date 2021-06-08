@@ -1,0 +1,42 @@
+<app-spinner></app-spinner>
+<div class="conatiner" *ngIf="producto; else loading">
+  <div class="product-img-container" *ngIf="producto.image!==null">
+      <img class="productImg" style="width: 100%; padding: 50px;" [src]="producto.image"
+          alt="Photo of a Shiba Inu">
+  </div>
+  <div class="product-description" style="width: 100%; padding: 50px;">
+      <h2 style="font-weight: 400;"> {{producto.id}}</h2>
+      <h2 style="font-weight: 400;"> {{producto.text}}</h2>
+      <div class="rating-container" style="position:relative; margin-top:-10px; margin-bottom: 5px;">
+        <a routerLink="/productos/{{producto.id}}/reviews">
+          <app-ratingstars id="ratingStars" style="margin-top: 0px; color:gold;" [rating]="producto.rating" placement="top" [ngbTooltip]="tooltip"></app-ratingstars>
+        </a>
+        <h4 style="display:inline">
+          <span class="sold"><pre style="display: inline;">   {{producto.ventas}}</pre> <pre style="display: inline;"> ventas</pre></span>
+        </h4>
+
+      </div>
+      <h2 style="font-weight: 400;"> {{producto.precio | currency}} </h2>
+      <hr>
+      <div>
+          <h4>{{producto.descripcion}}</h4>
+          <hr>
+          <h5>{{producto.informacion}}</h5>
+      </div>
+
+      <div style="position:relative;">
+          <button class="btn btn-secondary" style="display:block; position: absolute; margin-bottom: 0px;">pedir ahora
+          </button>
+
+          <button color="primary" class="button">
+              ADD TO CART
+          </button>
+      </div>
+
+
+  </div>
+
+</div>
+<ng-template #loading>
+  ...loading
+</ng-template>

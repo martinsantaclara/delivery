@@ -1,0 +1,41 @@
+<div style="position: sticky; top:0; z-index:99999; background: #a4a8ac;width:98%; left:1%;">
+  <div style="display:flex; justify-content: center; flex-wrap: wrap;">
+    <div style="position: relative; display:inline-block; margin-top: 5px; margin-left: 10px;" *ngFor="let categoria of categorias">
+      <img [src]=categoria.image style="width: 150px; height: 100px; border-radius: 0.5rem 0.5rem 0 0;">
+      <button style="position: absolute; left:0rem; top:6rem; border-radius: 0 0 0.5rem 0.5rem;
+                    width: 100%; z-index:9;" class="btn btn-primary"
+                    (click)="corrigeScroll(categoria.categoria,categorias.length)">{{categoria.categoria}}</button>
+      <p> hola  </p>
+    </div>
+  </div>
+</div>
+<div id="contenedorScroll" class="contenedorProductos" style="position: relative; background: #f8f9fa !important;
+                                                              width: 65%; height: 70vh; overflow-y: scroll; overflow-x: hidden;">
+  <div *ngFor="let categoria of soloCategorias">
+    <div style="border-left: 5px solid #3f51b5; background: #d6d7da; font-size: xx-large; margin-left: 1.5%; padding-left: 0.5rem; margin-top: 1%;"
+         id={{categoria}}>
+      <p>{{categoria}}</p>
+    </div>
+    <app-listaproductos [categoria]="categoria" [productos]="productos"></app-listaproductos>
+  </div>
+</div>
+<app-shoppingcart></app-shoppingcart>
+<ngx-spinner type="ball-newton-cradle">  <p style="font-size: 20px; color: white">Cargando datos...</p></ngx-spinner>
+
+<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis, quam esse inventore explicabo cupiditate minus, impedit quod blanditiis voluptate pariatur exercitationem reprehenderit ea libero numquam magnam quidem et incidunt?</p> -->
+<!-- ctrl k + ctrl c (comentar) -->
+<!-- ctrl k + ctrl u (descomentar) -->

@@ -1,0 +1,30 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="form-container mb-5 mt-1">
+  <h1 class="h3 mb-3 font-weight-normal">Bienvenido a <span style="font-family: 'Lobster', cursive">El Buen Gusto</span></h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="alert alert-danger" role="alert" *ngIf="isError">
+      Los datos que ha ingresado no son válidos           Intente nuevamente!
+    </div>
+    <input type="text" name="email" class="form-control" formControlName="email" placeholder="email" (focus)="onFocus()">
+
+    <input type="password" class="form-control" formControlName="password" placeholder="contraseña" (focus)="onFocus()">
+
+    <div class="form-group"></div>
+    <button type="submit" class="btn btn-primary btn-send" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+
+    <div style =" margin-top: 5px; margin-bottom: 5px; text-align: center;">
+      Eres nuevo?  <a routerLink="/user/registro">Crea tu cuenta</a>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-block btn-social btn-facebook" (click)="onLoginFacebook()">
+        <span class="fab fa-facebook-f"></span>
+        FACEBOOK
+      </button>
+      <button class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()">
+        <span class="fab fa-google"></span>
+        GOOGLE
+      </button>
+    </div>
+  </form>
+</div>

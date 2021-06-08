@@ -1,0 +1,45 @@
+#nombre {
+  font-style: italic;
+  font-weight: bold;
+  font-size: x-large;
+  display: block;
+  text-align: center;
+}
+#email {
+  font-size: large;
+  display: block;
+  text-align: center;
+}
+
+#noLogin {
+  font-style: italic;
+  font-weight: bold;
+  font-size: x-large;
+  color: red;
+  display: block;
+  text-align: center;
+}
+
+input[type="file"] #nuestroinput {
+  width: 0.1px;
+  display: none;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+label[for="nuestroinput"] {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgb(232, 236, 238);
+  display: inline-block;
+  transition: all .5s;
+  padding: 15px 40px !important;
+  text-transform: uppercase;
+  width: fit-content;
+  text-align: center;
+}

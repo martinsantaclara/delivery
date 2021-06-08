@@ -1,0 +1,67 @@
+<section id="profile" class="mb-5 mt-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-5 mx-auto">
+        <div class="card_profile">
+          <div class="card">
+            <div class="card-body">
+              <form *ngIf="usuario" [formGroup]="formTemplate" (ngSubmit)="onSave(formTemplate.value,usuario)">
+                <div class="text-center">
+                  <img *ngIf="imgSrc && !showSpinner" [src]="imgSrc" class="rounded-circle img-thumbnail" width="200px" height="200px">
+                </div>
+                <div class="form-group" *ngIf="isEdited">
+                  <!-- <input type="file" style=" width: 380px;" class="form-control" accept=".png, .jpg" (change)="showPreview($event)"> -->
+                  <span class="nuestroinput"><input type="file" style="display:none;" id="nuestroinput" class="form-control" accept=".png, .jpg" (change)="showPreview($event)"/></span>
+                  <!-- <label for="nuestroinput"><span>Cambiar foto</span></label> -->
+                  <label for="nuestroinput">
+                    <span>
+                      <img *ngIf="imgSrc && !showSpinner" [src]="imgSrc" class="rounded-circle img-thumbnail" width="200px" height="200px">
+                    </span>
+                  </label>
+
+
+                  <input type="button" style=" width: 380px;" class="form-control">
+                </div>
+
+                <label *ngIf="!isEdited && !showSpinner" style="margin-top: 30px; margin-bottom: 0%; " id="nombre">{{nombre}}</label>
+
+                <div class="form-group" *ngIf="isEdited">
+                  <input class="form-control" formControlName="name" placeholder="nombre">
+                </div>
+
+                <label *ngIf="!isEdited && !showSpinner" style=" margin-top: 0%; margin-bottom: 30px;" id="email">{{email}}</label>
+
+                <div class="form-group" *ngIf="isEdited">
+                  <input class="form-control" formControlName="email" placeholder="email">
+                </div>
+
+                <div class="form-group" *ngIf="isEdited">
+                  <input class="form-control" formControlName="direccion" placeholder="direccion">
+                </div>
+
+                <div class="form-group" *ngIf="isEdited">
+                  <input class="form-control" formControlName="telefono" placeholder="telefono">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6" *ngIf="!isEdited && !showSpinner">
+                    <button class="btn btn-info btn-block float-right" (click)="Edicion(isEdited,usuario)">Modificar</button>
+                  </div>
+                  <div class="form-group col-md-6" *ngIf="isEdited">
+                    <button class="btn btn-primary btn-block float-right" (click)="Edicion(isEdited,usuario)">Cancelar</button>
+                  </div>
+                  <div class="form-group col-md-6" *ngIf="!isEdited && !showSpinner">
+                    <button class="btn btn-danger btn-block float-right" (click)="Salir()">Salir</button>
+                  </div>
+                  <div class="form-group col-md-6" *ngIf="isEdited">
+                    <button type="submit" class="btn btn-success btn-block float-right">Guardar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

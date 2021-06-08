@@ -1,0 +1,33 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="form-group">
+    <label for="email">Name</label>
+    <input type="text" id="inputEmail" class="form-control" formControlName="email" (focus)="resetear($event.target)">
+    <!-- <input type="text" id="inputEmail" class="form-control" formControlName="email" (focus)="$event.target.select()"> -->
+
+    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <span *ngIf="email.hasError('required')">El email es requerido</span>
+      <span *ngIf="email.hasError('email')">El email debe ser válido</span>
+      <span *ngIf="email.hasError('existe')">El email ya existe</span>
+
+    </div>
+  </div>
+  <div class="alert alert-info" *ngIf="email.pending">
+    Chequeando si el email existe ...
+  </div>
+
+  <input type="password" class="form-control" formControlName="password" placeholder="contraseña" (focus)="resetear($event.target)">
+    <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div class="container-error-message" *ngIf="password.hasError('required')">
+       <p> La contraseña es requerida.</p>
+      </div>
+      <div class="container-error-message" *ngIf="password.hasError('minlength')">
+        <p>La contraseña debe contener 6 caracteres como mínimo.</p>
+      </div>
+      <div class="container-error-message" *ngIf="password.hasError('passwordValidation')">
+        <p>{{password.errors.passwordValidation.message}}</p>
+      </div>
+    </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Iniciar sesión</button>
+
+</form>
